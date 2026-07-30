@@ -28,7 +28,9 @@ public class VentaController {
         double subtotalGeneral = 0;
         for (int i = 0; i < items.size(); i++) {
             ItemVenta item = items.get(i);
-            double subtotal = item.getCelular().getPrecio() * item.getCantidad();
+            Celular cel = item.getCelular();
+            double precioConDescuento = cel.getPrecio() - cel.calcularDescuento();
+            double subtotal = precioConDescuento * item.getCantidad();
             item.setSubtotal(subtotal);
             subtotalGeneral += subtotal;
         }
@@ -48,7 +50,7 @@ public class VentaController {
             celularDAO.update(cel);
         }
 
-        System.out.println("Venta registrada. Total con IVA (19%): " + total);
+        System.out.println("Venta registrada. Total con IVA (19%) y descuentos aplicados: " + total);
     }
 
     public ArrayList<Venta> listar() {

@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
  */
 public class ClienteDAO {
 
-    ConexionDB c = new ConexionDB();
+    ConexionDB c = ConexionDB.getInstancia();
 
     public void crear(Cliente cli) {
         try (Connection con = c.conectar()) {

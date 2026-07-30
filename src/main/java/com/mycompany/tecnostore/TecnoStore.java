@@ -4,13 +4,12 @@
 
 package com.mycompany.tecnostore;
 
-/**
- *
- * @author garci
- */
+import VISTA.MenuPrincipal;
+
 public class TecnoStore {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        MenuPrincipal menu = new MenuPrincipal();
+        menu.Menu();
     }
 }

@@ -2,6 +2,7 @@ package CONTROLADOR;
 
 import DAO.CelularDAO;
 import MODELO.Celular;
+import UTILIDADES.FactoryCelular;
 import UTILIDADES.Validador;
 import java.util.ArrayList;
 
@@ -10,7 +11,9 @@ public class CelularController {
     CelularDAO celularDAO = new CelularDAO();
     Validador validador = new Validador();
 
-    public void registrar(Celular cl) {
+    public void registrar(String marca, String modelo, double precio, int stock, String sistemaOperativo, String gama) {
+        Celular cl = FactoryCelular.crearCelular(0, marca, modelo, precio, stock, sistemaOperativo, gama);
+
         if (!validador.precioValido(cl.getPrecio())) {
             System.out.println("El precio debe ser mayor a 0.");
             return;
@@ -22,7 +25,9 @@ public class CelularController {
         celularDAO.crear(cl);
     }
 
-    public void actualizar(Celular cl) {
+    public void actualizar(int id, String marca, String modelo, double precio, int stock, String sistemaOperativo, String gama) {
+        Celular cl = FactoryCelular.crearCelular(id, marca, modelo, precio, stock, sistemaOperativo, gama);
+
         if (!validador.precioValido(cl.getPrecio())) {
             System.out.println("El precio debe ser mayor a 0.");
             return;

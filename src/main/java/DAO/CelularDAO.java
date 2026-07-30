@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
  */
 public class CelularDAO {
 
-    ConexionDB c = new ConexionDB();
+    ConexionDB c = ConexionDB.getInstancia();
 
     public void crear(Celular cl) {
         try (Connection con = c.conectar()) {

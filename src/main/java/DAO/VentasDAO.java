@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class VentasDAO {
 
-    ConexionDB c = new ConexionDB();
+    ConexionDB c = ConexionDB.getInstancia();
 
     public void crear(Venta venta) {
         try (Connection con = c.conectar()) {
@@ -82,6 +82,23 @@ public class VentasDAO {
                     + "from detalle_ventas dv inner join celulares c on dv.id_celular = c.id where dv.id_venta = ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, idVenta);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Celular celular = new Celular(rs.getInt(5), rs.getString(6), rs.getString(7), rs.getDouble(10), rs.getInt(11), rs.getString(8), rs.getString(9));
+                respuesta.add(new ItemVenta(rs.getInt(1), rs.getInt(2), celular, rs.getInt(3), rs.getDouble(4)));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return respuesta;
+    }
+
+    public ArrayList<ItemVenta> listarTodosDetalles() {
+        ArrayList<ItemVenta> respuesta = new ArrayList<>();
+        try (Connection con = c.conectar()) {
+            String sql = "select dv.id, dv.id_venta, dv.cantidad, dv.subtotal, c.id, c.marca, c.modelo, c.sistema_operativo, c.gama, c.precio, c.stock "
+                    + "from detalle_ventas dv inner join celulares c on dv.id_celular = c.id";
+            PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Celular celular = new Celular(rs.getInt(5), rs.getString(6), rs.getString(7), rs.getDouble(10), rs.getInt(11), rs.getString(8), rs.getString(9));

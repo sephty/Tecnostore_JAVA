@@ -5,35 +5,35 @@ package MODELO;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-/**
- *
- * @author garci
- */
-public class Celular {
-    private int id;
-    private String marca;
-    private String modelo;
-    private double precio;
-    private int stock;
-    private String sistema_operativo;
-    private String gama;
 
-    public Celular(int id, String marca, String modelo, double precio, int stock, String sistema_operativo, String gama) {
+public abstract class Celular {
+    protected int id;
+    protected String marca;
+    protected String modelo;
+    protected double precio;
+    protected int stock;
+    protected String sistema_operativo;
+
+    public Celular(int id, String marca, String modelo, double precio, int stock, String sistema_operativo) {
         this.id = id;
         this.marca = marca;
         this.modelo = modelo;
         this.precio = precio;
         this.stock = stock;
         this.sistema_operativo = sistema_operativo;
-        this.gama = gama;
     }
 
-
+    public abstract double calcularDescuento();
+    public abstract String getGama();
 
     public int getId() {
         return id;
     }
-    
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getMarca() {
         return marca;
     }
@@ -74,16 +74,7 @@ public class Celular {
         this.sistema_operativo = sistema_operativo;
     }
 
-    public String getGama() {
-        return gama;
-    }
-
-    public void setGama(String gama) {
-        this.gama = gama;
-    }
-    
     @Override
-
     public String toString() {
         return """
                 id:                 %d
@@ -93,6 +84,6 @@ public class Celular {
                 stock:              %d
                 sistema_operativo:  %s
                 gama:               %s
-                """.formatted(id, marca, modelo, precio, stock, sistema_operativo, gama);
+                """.formatted(id, marca, modelo, precio, stock, sistema_operativo, getGama());
     }
 }
