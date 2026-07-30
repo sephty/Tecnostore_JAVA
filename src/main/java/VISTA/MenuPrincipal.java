@@ -199,7 +199,7 @@ public class MenuPrincipal {
                     }
 
                     ArrayList<ItemVenta> items = new ArrayList<>();
-                    String continuar;
+                    String continuar = null;
                     do {
                         int idCelular = validador.validarEntero("ID del celular:");
                         Celular celular = celularController.buscar(idCelular);
