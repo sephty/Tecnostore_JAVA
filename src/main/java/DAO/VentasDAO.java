@@ -5,6 +5,7 @@ import MODELO.Celular;
 import MODELO.Cliente;
 import MODELO.ItemVenta;
 import MODELO.Venta;
+import UTILIDADES.FactoryCelular;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -84,7 +85,7 @@ public class VentasDAO {
             ps.setInt(1, idVenta);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Celular celular = new Celular(rs.getInt(5), rs.getString(6), rs.getString(7), rs.getDouble(10), rs.getInt(11), rs.getString(8), rs.getString(9));
+                Celular celular = FactoryCelular.crearCelular(rs.getInt(5), rs.getString(6), rs.getString(7), rs.getDouble(10), rs.getInt(11), rs.getString(8), rs.getString(9));
                 respuesta.add(new ItemVenta(rs.getInt(1), rs.getInt(2), celular, rs.getInt(3), rs.getDouble(4)));
             }
         } catch (SQLException e) {
@@ -101,7 +102,7 @@ public class VentasDAO {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Celular celular = new Celular(rs.getInt(5), rs.getString(6), rs.getString(7), rs.getDouble(10), rs.getInt(11), rs.getString(8), rs.getString(9));
+                Celular celular = FactoryCelular.crearCelular(rs.getInt(5), rs.getString(6), rs.getString(7), rs.getDouble(10), rs.getInt(11), rs.getString(8), rs.getString(9));
                 respuesta.add(new ItemVenta(rs.getInt(1), rs.getInt(2), celular, rs.getInt(3), rs.getDouble(4)));
             }
         } catch (SQLException e) {

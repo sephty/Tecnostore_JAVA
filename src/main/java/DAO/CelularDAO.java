@@ -6,6 +6,7 @@ package DAO;
 
 import CONTROLADOR.ConexionDB;
 import MODELO.Celular;
+import UTILIDADES.FactoryCelular;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,10 +14,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author garci
- */
 public class CelularDAO {
 
     ConexionDB c = ConexionDB.getInstancia();
@@ -62,7 +59,7 @@ public class CelularDAO {
             PreparedStatement ps = con.prepareStatement("select * from celulares");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                respuesta.add(new Celular(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(6), rs.getInt(7), rs.getString(4), rs.getString(5)));
+                respuesta.add(FactoryCelular.crearCelular(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(6), rs.getInt(7), rs.getString(4), rs.getString(5)));
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -77,7 +74,7 @@ public class CelularDAO {
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                celular = new Celular(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(6), rs.getInt(7), rs.getString(4), rs.getString(5));
+                celular = FactoryCelular.crearCelular(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(6), rs.getInt(7), rs.getString(4), rs.getString(5));
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -103,5 +100,5 @@ public class CelularDAO {
                 System.out.println("Operacion cancelada!");
             }
         }
-    } 
+    }
 }
