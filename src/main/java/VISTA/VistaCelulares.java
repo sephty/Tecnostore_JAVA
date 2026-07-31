@@ -77,6 +77,9 @@ public class VistaCelulares {
                     break;
                 }
                 case 3: {
+                    if (!mostrarCelularesDisponibles()) {
+                        break;
+                    }
                     int id = validador.validarEntero("ID del celular a eliminar:");
                     celularController.eliminar(id);
                     break;
