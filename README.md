@@ -102,3 +102,4 @@ DriverManager.getConnection("jdbc:mysql://localhost:3306/tecnostore_db", "root",
 
 ### Archivo generado (reporte_ventas.txt)
 ![Contenido de reporte_ventas.txt](https://i.ibb.co/PvSSJvvm/image.png)
+
