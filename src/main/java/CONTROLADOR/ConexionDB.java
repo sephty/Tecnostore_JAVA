@@ -21,7 +21,7 @@ public class ConexionDB {
     public Connection conectar() {
         Connection c = null;
         try {
-            c = DriverManager.getConnection("jdbc:mysql://localhost:3306/tecnostore_db", "root", "200609");
+            c = DriverManager.getConnection("jdbc:mysql://localhost:3306/tecnostore_db", "root", "Password");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
