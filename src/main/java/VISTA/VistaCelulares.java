@@ -1,10 +1,5 @@
 package VISTA;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
 import CONTROLADOR.CelularController;
 import MODELO.Celular;
 import UTILIDADES.Validador;
@@ -12,8 +7,12 @@ import java.util.ArrayList;
 
 public class VistaCelulares {
 
-    Validador validador = new Validador();
-    CelularController celularController = new CelularController();
+    private Validador validador = new Validador();
+    private CelularController celularController = new CelularController();
+
+    public Celular buscarCelular(int id) {
+        return celularController.buscar(id);
+    }
 
     public boolean mostrarCelularesDisponibles() {
         ArrayList<Celular> disponibles = celularController.listar();

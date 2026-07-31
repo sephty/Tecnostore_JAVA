@@ -5,11 +5,11 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class Validador {
-    
-    //validaciones unicas
-    
+
+    private static final Scanner sc = new Scanner(System.in);
     private static final Pattern EMAIL_REGEX = Pattern.compile("^[\\w.+-]+@[\\w-]+\\.[a-zA-Z]{2,}$");
 
+    //validaciones unicas
     public boolean validarCorreo(String correo) {
         if (correo == null) {
             return false;
@@ -29,10 +29,11 @@ public class Validador {
     public boolean stockValido(int stock) {
         return stock >= 0;
     }
-    
+
+    // Validaciones opcionales
     public String validarTextoOpcional(String mensaje, String valorActual) {
         System.out.println(mensaje + " (Enter para mantener: " + valorActual + ")");
-        String dato = new Scanner(System.in).nextLine();
+        String dato = sc.nextLine();
         if (dato == null || dato.isBlank()) {
             return valorActual;
         }
@@ -41,7 +42,7 @@ public class Validador {
 
     public double validarDecimalOpcional(String mensaje, double valorActual) {
         System.out.println(mensaje + " (Enter para mantener: " + valorActual + ")");
-        String linea = new Scanner(System.in).nextLine();
+        String linea = sc.nextLine();
         if (linea == null || linea.isBlank()) {
             return valorActual;
         }
@@ -55,7 +56,7 @@ public class Validador {
 
     public int validarEnteroOpcional(String mensaje, int valorActual) {
         System.out.println(mensaje + " (Enter para mantener: " + valorActual + ")");
-        String linea = new Scanner(System.in).nextLine();
+        String linea = sc.nextLine();
         if (linea == null || linea.isBlank()) {
             return valorActual;
         }
@@ -70,52 +71,66 @@ public class Validador {
     // Validaciones generales
     public int validarEntero(String mensaje) {
         int dato = 0;
+        boolean valido = false;
         do {
+            System.out.println(mensaje);
+            String linea = sc.nextLine();
             try {
-                System.out.println(mensaje);
-                dato = new Scanner(System.in).nextInt();
-            } catch (Exception e) {
+                dato = Integer.parseInt(linea.trim());
+                valido = dato >= 1;
+                if (!valido) {
+                    System.out.println("El valor debe ser mayor o igual a 1.");
+                }
+            } catch (NumberFormatException e) {
                 System.out.println("Error de ingreso de datos.");
             }
-        } while (dato < 1);
+        } while (!valido);
         return dato;
     }
 
     public double validarDecimal(String mensaje) {
         double dato = 0;
+        boolean valido = false;
         do {
+            System.out.println(mensaje);
+            String linea = sc.nextLine();
             try {
-                System.out.println(mensaje);
-                dato = new Scanner(System.in).nextDouble();
-            } catch (Exception e) {
+                dato = Double.parseDouble(linea.trim());
+                valido = dato >= 1;
+                if (!valido) {
+                    System.out.println("El valor debe ser mayor o igual a 1.");
+                }
+            } catch (NumberFormatException e) {
                 System.out.println("Error de ingreso de datos.");
             }
-        } while (dato < 1);
+        } while (!valido);
         return dato;
     }
 
     public int validarEnteroRango(String mensaje, int minimo, int maximo) {
         int dato = 0;
+        boolean valido = false;
         do {
+            System.out.println(mensaje);
+            String linea = sc.nextLine();
             try {
-                System.out.println(mensaje);
-                dato = new Scanner(System.in).nextInt();
-            } catch (Exception e) {
+                dato = Integer.parseInt(linea.trim());
+                valido = dato >= minimo && dato <= maximo;
+                if (!valido) {
+                    System.out.println("El valor debe estar entre " + minimo + " y " + maximo + ".");
+                }
+            } catch (NumberFormatException e) {
                 System.out.println("Error de ingreso de datos.");
             }
-        } while (dato < minimo || dato > maximo);
+        } while (!valido);
         return dato;
     }
 
     public String validarTexto(String mensaje) {
         String dato = "";
         do {
-            try {
-                System.out.println(mensaje);
-                dato = new Scanner(System.in).nextLine();
-            } catch (Exception e) {
-                System.out.println("Error de ingreso de datos.");
-            }
+            System.out.println(mensaje);
+            dato = sc.nextLine();
         } while (dato == null || dato.isBlank());
         return dato;
     }

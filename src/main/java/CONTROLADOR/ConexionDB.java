@@ -8,7 +8,7 @@ public class ConexionDB {
 
     private static ConexionDB instancia;
 
-    public ConexionDB() {
+    private ConexionDB() {
     }
 
     public static ConexionDB getInstancia() {

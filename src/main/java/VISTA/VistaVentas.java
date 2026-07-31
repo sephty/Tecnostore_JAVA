@@ -1,14 +1,5 @@
 package VISTA;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
-/**
- *
- * @author garci
- */
 import CONTROLADOR.ClienteController;
 import CONTROLADOR.VentaController;
 import MODELO.Celular;
@@ -57,7 +48,7 @@ public class VistaVentas {
                     do {
                         System.out.println();
                         int idCelular = validador.validarEntero("ID del celular:");
-                        Celular celular = vistaCelulares.celularController.buscar(idCelular);
+                        Celular celular = vistaCelulares.buscarCelular(idCelular);
                         if (celular == null) {
                             System.out.println("No existe un celular con ese ID.");
                             continue;
