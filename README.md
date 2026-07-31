@@ -1,4 +1,4 @@
-# TecnoStore
+# CAMPUSLANDS TecnoStore
 
 Sistema de consola en Java para la gestión de ventas, inventario y clientes de una tienda minorista de celulares.
 
@@ -81,40 +81,24 @@ DriverManager.getConnection("jdbc:mysql://localhost:3306/tecnostore_db", "root",
 
 5. Compilar y ejecutar `TecnoStore.java` (clase con el método `main`).
 
-## Ejemplo de ejecución
-
 ### Menú principal
-
-<!-- imagen: menu principal -->
+![Menú principal](https://i.ibb.co/XxP4GxRd/Captura-de-pantalla-2026-07-30-235332.png)
 
 ### Gestión de celulares
-
-<!-- imagen: registrar celular -->
-
-<!-- imagen: listar celulares -->
-
-<!-- imagen: reponer stock -->
+![Registrar celular](https://i.ibb.co/GQQbdQnH/image.png)
+![Listar celulares](https://i.ibb.co/GQQbdQnH/image.png)
+![Actualizar o reponer](https://i.ibb.co/XxP4GxRd/Captura-de-pantalla-2026-07-30-235332.png)
 
 ### Gestión de clientes
-
-<!-- imagen: registrar cliente -->
-
-<!-- imagen: listar clientes -->
+![Listar clientes](https://i.ibb.co/SDtJ424x/image.png)
 
 ### Gestión de ventas
-
-<!-- imagen: registrar venta -->
-
-<!-- imagen: listar ventas -->
+![Listar ventas](https://i.ibb.co/YTBsC1Dy/image.png)
 
 ### Reportes
-
-<!-- imagen: stock bajo -->
-
-<!-- imagen: top 3 mas vendidos -->
-
-<!-- imagen: ventas por mes -->
+![Stock bajo](https://i.ibb.co/YBX8fSNF/image.png)
+![Top 3 más vendidos](https://i.ibb.co/pvdkKLQk/image.png)
+![Ventas por mes](https://i.ibb.co/5hCbfz16/image.png)
 
 ### Archivo generado (reporte_ventas.txt)
-
-<!-- imagen: contenido de reporte_ventas.txt -->
+![Contenido de reporte_ventas.txt](https://i.ibb.co/PvSSJvvm/image.png)
