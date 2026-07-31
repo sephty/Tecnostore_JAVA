@@ -51,7 +51,7 @@ public class VistaCelulares {
                     String marca = validador.validarTexto("Marca:");
                     String modelo = validador.validarTexto("Modelo:");
                     double precio = validador.validarDecimal("Precio:");
-                    int stock = validador.validarEntero("Stock:");
+                    int stock = validador.validarEnteroConMinimo("Stock:", 0);
                     String so = validador.validarTexto("Sistema operativo:");
                     String gama = validador.validarTexto("Gama (ALTA, MEDIA, BAJA):");
                     celularController.registrar(marca, modelo, precio, stock, so, gama);

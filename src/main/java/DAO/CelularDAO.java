@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package DAO;
 
 import CONTROLADOR.ConexionDB;
@@ -11,8 +7,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 
 public class CelularDAO {
 
@@ -84,21 +80,19 @@ public class CelularDAO {
 
     public void delete(Celular celular) {
         if (celular == null) {
-            System.out.println("NO EXISTE CELULAR CON LAS ESPICIFICACIONES DADAS!");
-        } else {
-            int op = JOptionPane.showConfirmDialog(null, "¿Esta segur@ de eliminar " + celular.getMarca() + " " + celular.getModelo() + "?", null, JOptionPane.YES_NO_OPTION);
-            if (op == 0) {
-                try (Connection con = c.conectar()) {
-                    PreparedStatement ps = con.prepareStatement("delete from celulares where id=?");
-                    ps.setInt(1, celular.getId());
-                    ps.executeUpdate();
-                    System.out.println("Celular " + celular.getMarca() + " " + celular.getModelo() + " eliminado con exito!");
-                } catch (SQLException e) {
-                    System.out.println(e.getMessage());
-                }
-            } else {
-                System.out.println("Operacion cancelada!");
-            }
+            System.out.println("NO EXISTE CELULAR CON LAS ESPECIFICACIONES DADAS!");
+            return;
+        }
+        try (Connection con = c.conectar()) {
+            PreparedStatement ps = con.prepareStatement("delete from celulares where id=?");
+            ps.setInt(1, celular.getId());
+            ps.executeUpdate();
+            System.out.println("Celular " + celular.getMarca() + " " + celular.getModelo() + " eliminado con exito!");
+        } catch (SQLIntegrityConstraintViolationException e) {
+            System.out.println("No se puede eliminar " + celular.getMarca() + " " + celular.getModelo()
+                    + ": tiene ventas registradas asociadas. Considera actualizar su stock a 0 en vez de eliminarlo.");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
     }
 }

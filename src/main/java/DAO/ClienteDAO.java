@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package DAO;
 
 import CONTROLADOR.ConexionDB;
@@ -10,12 +6,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
-/**
- *
- * @author garci
- */
+
 public class ClienteDAO {
 
     ConexionDB c = ConexionDB.getInstancia();
@@ -98,20 +91,17 @@ public class ClienteDAO {
     public void delete(Cliente cliente) {
         if (cliente == null) {
             System.out.println("NO EXISTE EL CLIENTE!");
-        } else {
-            int op = JOptionPane.showConfirmDialog(null, "¿Esta segur@ de eliminar a " + cliente.getNombre() + "?", null, JOptionPane.YES_NO_OPTION);
-            if (op == 0) {
-                try (Connection con = c.conectar()) {
-                    PreparedStatement ps = con.prepareStatement("delete from clientes where id=?");
-                    ps.setInt(1, cliente.getId());
-                    ps.executeUpdate();
-                    System.out.println("Cliente " + cliente.getNombre() + " eliminado con exito!");
-                } catch (SQLException e) {
-                    System.out.println(e.getMessage());
-                }
-            } else {
-                System.out.println("Operacion cancelada!");
-            }
+            return;
+        }
+        try (Connection con = c.conectar()) {
+            PreparedStatement ps = con.prepareStatement("delete from clientes where id=?");
+            ps.setInt(1, cliente.getId());
+            ps.executeUpdate();
+            System.out.println("Cliente " + cliente.getNombre() + " eliminado con exito!");
+        } catch (SQLIntegrityConstraintViolationException e) {
+            System.out.println("No se puede eliminar " + cliente.getNombre() + ": tiene ventas registradas asociadas.");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
     }
 }

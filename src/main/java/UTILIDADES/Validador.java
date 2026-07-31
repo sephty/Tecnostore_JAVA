@@ -9,7 +9,6 @@ public class Validador {
     private static final Scanner sc = new Scanner(System.in);
     private static final Pattern EMAIL_REGEX = Pattern.compile("^[\\w.+-]+@[\\w-]+\\.[a-zA-Z]{2,}$");
 
-    //validaciones unicas
     public boolean validarCorreo(String correo) {
         if (correo == null) {
             return false;
@@ -30,7 +29,6 @@ public class Validador {
         return stock >= 0;
     }
 
-    // Validaciones opcionales
     public String validarTextoOpcional(String mensaje, String valorActual) {
         System.out.println(mensaje + " (Enter para mantener: " + valorActual + ")");
         String dato = sc.nextLine();
@@ -68,18 +66,23 @@ public class Validador {
         }
     }
 
-    // Validaciones generales
+    // Entero con minimo por defecto de 1
     public int validarEntero(String mensaje) {
-        int dato = 0;
+        return validarEnteroConMinimo(mensaje, 1);
+    }
+
+    // Entero con minimo configurable
+    public int validarEnteroConMinimo(String mensaje, int minimo) {
+        int dato = minimo - 1;
         boolean valido = false;
         do {
             System.out.println(mensaje);
             String linea = sc.nextLine();
             try {
                 dato = Integer.parseInt(linea.trim());
-                valido = dato >= 1;
+                valido = dato >= minimo;
                 if (!valido) {
-                    System.out.println("El valor debe ser mayor o igual a 1.");
+                    System.out.println("El valor debe ser mayor o igual a " + minimo + ".");
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Error de ingreso de datos.");
@@ -96,9 +99,9 @@ public class Validador {
             String linea = sc.nextLine();
             try {
                 dato = Double.parseDouble(linea.trim());
-                valido = dato >= 1;
+                valido = dato > 0;
                 if (!valido) {
-                    System.out.println("El valor debe ser mayor o igual a 1.");
+                    System.out.println("El valor debe ser mayor a 0.");
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Error de ingreso de datos.");
