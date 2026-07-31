@@ -22,6 +22,12 @@ public class FactoryCelular {
             default:
                 System.out.println("Gama no reconocida, se asigna BAJA por defecto.");
                 return new CelularGamaBaja(id, marca, modelo, precio, stock, sistemaOperativo);
+     
         }
     }
+    
+    
+    
 }
+
+

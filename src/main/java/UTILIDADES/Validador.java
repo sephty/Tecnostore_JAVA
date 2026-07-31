@@ -30,6 +30,43 @@ public class Validador {
         return stock >= 0;
     }
     
+    public String validarTextoOpcional(String mensaje, String valorActual) {
+        System.out.println(mensaje + " (Enter para mantener: " + valorActual + ")");
+        String dato = new Scanner(System.in).nextLine();
+        if (dato == null || dato.isBlank()) {
+            return valorActual;
+        }
+        return dato;
+    }
+
+    public double validarDecimalOpcional(String mensaje, double valorActual) {
+        System.out.println(mensaje + " (Enter para mantener: " + valorActual + ")");
+        String linea = new Scanner(System.in).nextLine();
+        if (linea == null || linea.isBlank()) {
+            return valorActual;
+        }
+        try {
+            return Double.parseDouble(linea);
+        } catch (NumberFormatException e) {
+            System.out.println("Valor invalido, se mantiene el actual.");
+            return valorActual;
+        }
+    }
+
+    public int validarEnteroOpcional(String mensaje, int valorActual) {
+        System.out.println(mensaje + " (Enter para mantener: " + valorActual + ")");
+        String linea = new Scanner(System.in).nextLine();
+        if (linea == null || linea.isBlank()) {
+            return valorActual;
+        }
+        try {
+            return Integer.parseInt(linea);
+        } catch (NumberFormatException e) {
+            System.out.println("Valor invalido, se mantiene el actual.");
+            return valorActual;
+        }
+    }
+
     // Validaciones generales
     public int validarEntero(String mensaje) {
         int dato = 0;

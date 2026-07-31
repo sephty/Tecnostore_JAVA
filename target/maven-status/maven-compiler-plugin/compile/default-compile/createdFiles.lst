@@ -1,6 +1,8 @@
+VISTA\VistaClientes.class
 UTILIDADES\FactoryCelular.class
 MODELO\CelularGamaAlta.class
 UTILIDADES\ReporteUtils.class
+VISTA\VistaVentas.class
 CONTROLADOR\ClienteController.class
 MODELO\Venta.class
 UTILIDADES\ArchivoUtils.class
@@ -8,9 +10,11 @@ com\mycompany\tecnostore\TecnoStore.class
 DAO\CelularDAO.class
 MODELO\Celular.class
 MODELO\ItemVenta.class
+VISTA\VistaReportes.class
 UTILIDADES\Validador.class
 CONTROLADOR\VentaController.class
 MODELO\CelularGamaMedia.class
+VISTA\VistaCelulares.class
 CONTROLADOR\CelularController.class
 VISTA\MenuPrincipal.class
 CONTROLADOR\ConexionDB.class

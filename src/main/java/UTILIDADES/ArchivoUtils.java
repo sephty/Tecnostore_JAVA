@@ -32,7 +32,7 @@ public class ArchivoUtils {
                 bw.newLine();
             } else {
                 for (int i = 0; i < ventas.size(); i++) {
-                    Venta v = ventas.get(i);
+                    Venta v = ventas.get(i); 
                     bw.write("Venta #" + v.getId());
                     bw.newLine();
                     bw.write("Cliente:  " + v.getCliente().getNombre());

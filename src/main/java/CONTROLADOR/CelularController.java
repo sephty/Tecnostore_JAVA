@@ -10,6 +10,7 @@ public class CelularController {
 
     CelularDAO celularDAO = new CelularDAO();
     Validador validador = new Validador();
+    
 
     public void registrar(String marca, String modelo, double precio, int stock, String sistemaOperativo, String gama) {
         Celular cl = FactoryCelular.crearCelular(0, marca, modelo, precio, stock, sistemaOperativo, gama);
