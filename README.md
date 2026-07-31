@@ -82,23 +82,23 @@ DriverManager.getConnection("jdbc:mysql://localhost:3306/tecnostore_db", "root",
 5. Compilar y ejecutar `TecnoStore.java` (clase con el método `main`).
 
 ### Menú principal
-![Menú principal](https://ibb.co/MkHhJk0j)
+![Menú principal](https://i.ibb.co/XxP4GxRd/Captura-de-pantalla-2026-07-30-235332.png)
 
 ### Gestión de celulares
-![Registrar celular](https://ibb.co/ZzzkfzG2)
-![Listar celulares](https://ibb.co/Q2TZZTK)
-![Actualizar o reponer](https://ibb.co/MkHhJk0j)
+![Registrar celular](https://i.ibb.co/GQQbdQnH/image.png)
+![Listar celulares](https://i.ibb.co/GQQbdQnH/image.png)
+![Actualizar o reponer](https://i.ibb.co/XxP4GxRd/Captura-de-pantalla-2026-07-30-235332.png)
 
 ### Gestión de clientes
-![Listar clientes](https://ibb.co/0pCQRkRX)
+![Listar clientes](https://i.ibb.co/SDtJ424x/image.png)
 
 ### Gestión de ventas
-![Listar ventas](https://ibb.co/zHVvMB87)
+![Listar ventas](https://i.ibb.co/YTBsC1Dy/image.png)
 
 ### Reportes
-![Stock bajo](https://ibb.co/k2J0qTGs)
-![Top 3 más vendidos](https://ibb.co/hRVTdmcT)
-![Ventas por mes](https://ibb.co/s9c8MDg2)
+![Stock bajo](https://i.ibb.co/YBX8fSNF/image.png)
+![Top 3 más vendidos](https://i.ibb.co/pvdkKLQk/image.png)
+![Ventas por mes](https://i.ibb.co/5hCbfz16/image.png)
 
 ### Archivo generado (reporte_ventas.txt)
-![Contenido de reporte_ventas.txt](https://ibb.co/0Rww1RRD)
+![Contenido de reporte_ventas.txt](https://i.ibb.co/PvSSJvvm/image.png)
