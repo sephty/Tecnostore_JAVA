@@ -7,6 +7,7 @@ import java.util.regex.Pattern;
 public class Validador {
     
     //validaciones unicas
+    
     private static final Pattern EMAIL_REGEX = Pattern.compile("^[\\w.+-]+@[\\w-]+\\.[a-zA-Z]{2,}$");
 
     public boolean validarCorreo(String correo) {
