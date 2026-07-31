@@ -85,36 +85,32 @@ DriverManager.getConnection("jdbc:mysql://localhost:3306/tecnostore_db", "root",
 
 ### Menú principal
 
-<!-- imagen: menu principal -->
+[<!-- imagen: menu principal -->](https://ibb.co/MkHhJk0j)
 
 ### Gestión de celulares
 
-<!-- imagen: registrar celular -->
+[<!-- imagen: registrar celular -->](https://ibb.co/ZzzkfzG2)
 
-<!-- imagen: listar celulares -->
+[<!-- imagen: listar celulares -->](https://ibb.co/Q2TZZTK)
 
-<!-- imagen: reponer stock -->
+[<!-- imagen: actualizar o reponer -->](https://ibb.co/MkHhJk0j)
 
 ### Gestión de clientes
 
-<!-- imagen: registrar cliente -->
-
-<!-- imagen: listar clientes -->
+[<!-- imagen: listar clientes -->](https://ibb.co/0pCQRkRX)
 
 ### Gestión de ventas
 
-<!-- imagen: registrar venta -->
-
-<!-- imagen: listar ventas -->
+[<!-- imagen: listar ventas -->](https://ibb.co/zHVvMB87)
 
 ### Reportes
 
-<!-- imagen: stock bajo -->
+[<!-- imagen: stock bajo -->](https://ibb.co/k2J0qTGs)
 
-<!-- imagen: top 3 mas vendidos -->
+[<!-- imagen: top 3 mas vendidos -->](https://ibb.co/hRVTdmcT)
 
-<!-- imagen: ventas por mes -->
+[<!-- imagen: ventas por mes -->](https://ibb.co/s9c8MDg2)
 
 ### Archivo generado (reporte_ventas.txt)
 
-<!-- imagen: contenido de reporte_ventas.txt -->
+[<!-- imagen: contenido de reporte_ventas.txt -->](https://ibb.co/0Rww1RRD)
