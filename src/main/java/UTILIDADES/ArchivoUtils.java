@@ -35,6 +35,8 @@ public class ArchivoUtils {
                     Venta v = ventas.get(i); 
                     bw.write("Venta #" + v.getId());
                     bw.newLine();
+                    bw.write("ID del cliente:  " + v.getCliente().getId());
+                    bw.newLine();
                     bw.write("Cliente:  " + v.getCliente().getNombre());
                     bw.newLine();
                     bw.write("Fecha:    " + formato.format(v.getFecha()));

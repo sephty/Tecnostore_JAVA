@@ -4,17 +4,18 @@
  */
 package UTILIDADES;
 
-import DAO.CelularDAO;
-import DAO.VentasDAO;
-import MODELO.Celular;
-import MODELO.ItemVenta;
-import MODELO.Venta;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+
+import DAO.CelularDAO;
+import DAO.VentasDAO;
+import MODELO.Celular;
+import MODELO.ItemVenta;
+import MODELO.Venta;
 
 public class ReporteUtils {
 
@@ -66,6 +67,32 @@ public class ReporteUtils {
             for (Map.Entry<String, Integer> entry : top3) {
                 System.out.printf("%d. %-25s %d unidades%n", puesto, entry.getKey(), entry.getValue());
                 puesto++;
+            }
+        }
+        System.out.println("------------------------------------------------------------");
+    }
+    
+    public void mostrarSistemasOperativosMasVendidos() {
+        ArrayList<ItemVenta> detalles = ventasDAO.listarTodosDetalles();
+
+        Map<String, Integer> ventasPorSO = detalles.stream()
+                .collect(Collectors.groupingBy(
+                        i -> i.getCelular().getSistema_operativo(),
+                        Collectors.summingInt(ItemVenta::getCantidad)
+                ));
+
+        List<Map.Entry<String, Integer>> ordenado = ventasPorSO.entrySet().stream()
+                .sorted(Map.Entry.<String, Integer>comparingByValue().reversed())
+                .collect(Collectors.toList());
+
+        System.out.println("------------------------------------------------------------");
+        System.out.println("REPORTE: SISTEMAS OPERATIVOS MAS VENDIDOS");
+        System.out.println("------------------------------------------------------------");
+        if (ordenado.isEmpty()) {
+            System.out.println("Aun no hay ventas registradas.");
+        } else {
+            for (Map.Entry<String, Integer> entry : ordenado) {
+                System.out.printf("%-20s %d unidades%n", entry.getKey(), entry.getValue());
             }
         }
         System.out.println("------------------------------------------------------------");

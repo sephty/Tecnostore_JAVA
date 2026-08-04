@@ -27,7 +27,8 @@ public class VistaReportes {
                                     1. Stock bajo
                                     2. Top 3 mas vendidos
                                     3. Ventas totales por mes
-                                    4. Volver
+                                    4. Sistemas Operativos mas vendidos
+                                    5. volver
                                     ------------------------------------------------------------
                                     """, 1, 4);
             switch (op) {
@@ -40,7 +41,9 @@ public class VistaReportes {
                 case 3:
                     reporteUtils.mostrarVentasPorMes();
                     break;
+                case 4:
+                    reporteUtils.mostrarSistemasOperativosMasVendidos();
             }
-        } while (op != 4);
+        } while (op != 5);
     }
 }

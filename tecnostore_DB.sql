@@ -49,3 +49,25 @@ CREATE TABLE detalle_ventas (
         ON UPDATE CASCADE,
     CONSTRAINT chk_cantidad_positiva CHECK (cantidad > 0)
 );
+
+INSERT INTO celulares (marca, modelo, sistema_operativo, gama, precio, stock) VALUES
+('Apple', 'iPhone 15 Pro', 'IOS', 'Alta', 1199.99, 15),
+('Samsung', 'Galaxy S24', 'ANDROID', 'Alta', 999.50, 20),
+('Xiaomi', 'Redmi Note 13', 'ANDROID', 'Media', 250.00, 40),
+('Motorola', 'Moto G54', 'ANDROID', 'Media', 180.00, 35),
+('Nokia', '110', 'PROPRIETARY', 'Baja', 30.00, 50);
+
+INSERT INTO clientes (nombre, identificacion, correo, telefono) VALUES
+('Juan Pérez', '10203040', 'juan.perez@email.com', '+573001234567'),
+('Maria López', '50607080', 'maria.lopez@email.com', '+573119876543'),
+('Carlos Mendoza', '90101112', 'carlos.m@email.com', '+573204567890');
+
+INSERT INTO ventas (id_cliente, total) VALUES
+(1, 1199.99),
+(2, 500.00),
+(3, 30.00);
+
+INSERT INTO detalle_ventas (id_venta, id_celular, cantidad, subtotal) VALUES
+(1, 1, 1, 1199.99),
+(2, 3, 2, 500.00),
+(3, 5, 1, 30.00);
