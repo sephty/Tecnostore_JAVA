@@ -17,6 +17,7 @@ public class VistaVentas {
     VentaController ventaController = new VentaController();
     ArchivoUtils archivoUtils = new ArchivoUtils();
     VistaCelulares vistaCelulares = new VistaCelulares();
+    VistaClientes vistaClientes = new VistaClientes();
 
     public void menu() {
         int op;
@@ -32,6 +33,9 @@ public class VistaVentas {
                                     """, 1, 3);
             switch (op) {
                 case 1: {
+                    if (!vistaClientes.mostrarClientesDisponibles()) {
+                        break;
+                    }
                     int idCliente = validador.validarEntero("ID del cliente:");
                     Cliente cliente = clienteController.buscar(idCliente);
                     if (cliente == null) {
