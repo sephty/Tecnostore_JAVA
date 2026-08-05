@@ -38,7 +38,7 @@ public class CreditoService {
         for (Credito cr : lista) {
             Cliente cli = cr.getCliente();
             String nombre = cli != null ? cli.getNombre() : "(cliente desconocido)";
-            System.out.printf("%d. %s → $%,.0f%n", i, nombre, cr.getSaldo_pendiente());
+            System.out.printf("%d. %s (id=%d) → $%,.0f%n", i, nombre, cli != null ? cli.getId() : -1, cr.getSaldo_pendiente());
             i++;
         }
     }
@@ -83,6 +83,33 @@ public class CreditoService {
 
         System.out.println("Abono registrado exitosamente.");
         System.out.printf("Nuevo saldo de %s: $%,.0f%n", credito.getCliente() != null ? credito.getCliente().getNombre() : "(cliente)", nuevoSaldoPendiente);
+        return true;
+    }
+
+    public boolean crearCredito(int idCliente, double saldoPendienteInicial) {
+        if (saldoPendienteInicial <= 0) {
+            System.out.println("El saldo inicial debe ser mayor a 0.");
+            return false;
+        }
+        Cliente cliente = clienteDAO.buscar(idCliente);
+        if (cliente == null) {
+            System.out.println("Cliente no encontrado.");
+            return false;
+        }
+        Credito existente = creditoDAO.buscarPorClienteId(idCliente);
+        if (existente != null) {
+            System.out.println("El cliente ya tiene un credito registrado.");
+            return false;
+        }
+        Timestamp ahora = new Timestamp(System.currentTimeMillis());
+        Credito nuevo = new Credito(cliente, 0.0, ahora);
+        nuevo.setSaldo_pendiente(saldoPendienteInicial);
+        boolean creado = creditoDAO.crear(nuevo);
+        if (!creado) {
+            System.out.println("Error al crear el credito en la base de datos.");
+            return false;
+        }
+        System.out.println("Credito creado exitosamente para " + cliente.getNombre() + ". Saldo pendiente: $" + String.format("%,.0f", saldoPendienteInicial));
         return true;
     }
 }

@@ -56,6 +56,25 @@ public class CreditoDAO {
         return credito;
     }
 
+    public boolean crear(Credito credito) {
+        String sql = "insert into credito(id_cliente, saldo, saldo_pendiente, fecha_ultimo_abono) values (?,?,?,?)";
+        try (Connection con = c.conectar(); PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, credito.getCliente().getId());
+            ps.setDouble(2, credito.getSaldo());
+            ps.setDouble(3, credito.getSaldo_pendiente());
+            if (credito.getFecha_ultimo_abono() != null) {
+                ps.setTimestamp(4, credito.getFecha_ultimo_abono());
+            } else {
+                ps.setTimestamp(4, new Timestamp(System.currentTimeMillis()));
+            }
+            int inserted = ps.executeUpdate();
+            return inserted > 0;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+
     public boolean actualizarSaldoPorClienteId(int idCliente, double nuevoSaldoPendiente, Timestamp fecha) {
         String sql = "update credito set saldo_pendiente = ?, fecha_ultimo_abono = ? where id_cliente = ?";
         try (Connection con = c.conectar(); PreparedStatement ps = con.prepareStatement(sql)) {
