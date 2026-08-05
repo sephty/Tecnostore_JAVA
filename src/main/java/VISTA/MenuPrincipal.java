@@ -9,6 +9,7 @@ public class MenuPrincipal {
     VistaClientes vistaClientes = new VistaClientes();
     VistaVentas vistaVentas = new VistaVentas();
     VistaReportes vistaReportes = new VistaReportes();
+    VistaCreditos vistaCreditos = new VistaCreditos();
 
     public void Menu() {
         int op;
@@ -21,9 +22,10 @@ public class MenuPrincipal {
                                     2. Clientes
                                     3. Ventas
                                     4. Reportes
-                                    5. Salir
+                                    5. Creditos
+                                    6. Salir
                                     ------------------------------------------------------------
-                                    """, 1, 5);
+                                    """, 1, 6);
             switch (op) {
                 case 1:
                     vistaCelulares.menu();
@@ -38,9 +40,12 @@ public class MenuPrincipal {
                     vistaReportes.menu();
                     break;
                 case 5:
+                    vistaCreditos.menu();
+                    break;
+                case 6:
                     System.out.println("Gracias por usar TecnoStore! Vuelva Pronto!");
                     break;
             }
-        } while (op != 5);
+        } while (op != 6);
     }
 }

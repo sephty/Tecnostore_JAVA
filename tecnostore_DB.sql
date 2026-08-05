@@ -22,6 +22,16 @@ CREATE TABLE clientes (
     telefono VARCHAR(20) NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS credito (
+    id_credito INT AUTO_INCREMENT PRIMARY KEY,
+    id_cliente INT NOT NULL,
+    saldo_pendiente DECIMAL(12, 2) NOT NULL DEFAULT 0.00,
+    fecha_ultimo_abono DATETIME NULL,
+    FOREIGN KEY (id_cliente) REFERENCES cliente(id) ON DELETE CASCADE,
+    -- Restricción para asegurar a nivel de Base de Datos que el saldo nunca sea negativo
+    CONSTRAINT chk_saldo_positivo CHECK (saldo_pendiente >= 0)
+);
+
 CREATE TABLE ventas (
     id INT AUTO_INCREMENT PRIMARY KEY,
     id_cliente INT NOT NULL,
